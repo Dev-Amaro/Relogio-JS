@@ -1,0 +1,21 @@
+import tkinter as tk
+import datetime
+
+from h11 import Data
+
+class TelaPrincipal:
+    def __init__(self, master):
+        self.nossatela = master
+        self.lblRelogio = tk.Label(
+            self.nossatela, font=('calibri', 26), fg='Black')
+        self.lblRelogio.pack(pady=30, padx=30)
+        self.alteracao()
+
+    def alteracao(self):
+        now = datetime.datetime.now()
+        self.lblRelogio['text'] = now.strftime('%H:%M:%S')
+        self.nossatela.after(1000, self.alteracao)
+
+janelaRaiz = tk.Tk()
+TelaPrincipal(janelaRaiz)
+janelaRaiz.mainloop()
